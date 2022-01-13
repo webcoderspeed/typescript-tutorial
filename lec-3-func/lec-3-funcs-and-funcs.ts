@@ -28,7 +28,6 @@ export function arrayMutate(
 }
 
 
-
 const myNewMutateFunction: MutationFunction = (num: number, val?: number) => val ? num * val : num * 2;
 
 console.log(arrayMutate([1, 2, 3], myNewMutateFunction));
