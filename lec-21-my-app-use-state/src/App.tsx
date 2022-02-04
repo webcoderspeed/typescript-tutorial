@@ -30,10 +30,10 @@ function App() {
   const [payload, setPayload] = useState<Payload | null>(null);
 
   useEffect(() => {
-    fetch('./data.json')
+    fetch(`http://jsonplaceholder.typicode.com/todos/1`)
       .then((res) => res.json())
       .then((data) => setPayload(data));
-  }, []);
+  }, [payload]);
 
   const [todos, dispatch] = useReducer((todos: Todo[], action: ActionType) => {
     switch (action.type) {
@@ -53,7 +53,7 @@ function App() {
       dispatch({
         type: 'ADD_TODO',
         text: newTodoRef.current.value,
-      })
+      });
     }
   }, []);
 
@@ -71,7 +71,9 @@ function App() {
                   id: todo.id,
                 })
               }
-            ></button>
+            >
+              REMOVE TODO
+            </button>
           </li>
         ))}
       </ul>
